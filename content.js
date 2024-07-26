@@ -1,15 +1,11 @@
-// content.js
-
-function getPageText() {
-  let text = "";
-  if (document.body) {
-    text = document.body.innerText || "";
-  }
-  return text;
-}
-
-chrome.runtime.sendMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === "getPageText") {
-    sendResponse({ text: getPageText() });
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "extractText") {
+    let content = "";
+    // You can customize the text extraction logic to fit the page structure
+    const paragraphs = document.getElementsByTagName("p");
+    for (let i = 0; i < paragraphs.length; i++) {
+      content += paragraphs[i].innerText + "\n";
+    }
+    sendResponse({ data: content });
   }
 });

@@ -1,21 +1,20 @@
 {
   "manifest_version": 3,
-  "name": "Summary Extensions of the world!",
-  "description": "Base Level Summary Extension",
+  "name": "PagePeek - Page Summarizer",
   "version": "1.0",
-  "permissions": ["activeTab", "scripting", "storage", "nativeMessaging"],
-
-  "backround": {
+  "description": "Summarize the current page using OpenAI.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "background": {
     "service_worker": "background.js"
   },
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "images.png"
+    "default_icon": "summary-icon.png"
   },
   "content_scripts": [
     {
-      "js": ["content.js"],
-      "matches": ["<all_urls>"]
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
     }
   ]
 }
