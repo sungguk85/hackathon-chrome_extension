@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Summary Popup</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="stylesheet.css" />
+    <title>Summary Popup</title>
   </head>
   <body>
     <div id="container">
-      <h1>PagePeek</h1>
-      <button id="summarizeButton">Get Summary</button>
-      <div id="summary">Click the button below to get a summary.</div>
-    </div>
+      <h1 data-text="PagePeek">SnapSummary</h1>
+      <select id="languageSelect">
+        <option value="en" selected>English</option>
+        <option value="es">Español</option>
+        <option value="zh">中文</option>
+        <option value="kr">한글</option>
+        <!-- <option value="fa">Persian</option> -->
+      </select>
 
+      <button id="summarizeButton">Get Summary</button>
+      <div id="summary">Click the button above to get a summary.</div>
+      <div id="login">*ChatGPT API key is required to use*</div>
+      <!-- <button id="toggleTheme">Toggle Dark Mode</button> -->
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>

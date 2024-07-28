@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "PagePeek - Page Summarizer",
+  "name": "SnapSummary - Page Summarizer",
   "version": "1.0",
-  "description": "Summarize the current page using OpenAI.",
+  "description": "Summarize the current page using ChatGPT",
   "permissions": ["activeTab", "scripting", "storage"],
   "background": {
     "service_worker": "background.js"

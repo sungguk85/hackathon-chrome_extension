@@ -7,5 +7,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       content += paragraphs[i].innerText + "\n";
     }
     sendResponse({ data: content });
+    // console.log(sendResponse);
   }
 });

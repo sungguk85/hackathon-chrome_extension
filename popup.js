@@ -18,8 +18,9 @@ document
           async (response) => {
             if (response && response.data) {
               const content = response.data;
+              const language = document.getElementById("languageSelect").value;
               try {
-                const summary = await getSummary(content);
+                const summary = await getSummary(content, language);
                 document.getElementById("summary").innerText = summary;
               } catch (error) {
                 console.error("Error getting summary:", error);
@@ -36,23 +37,26 @@ document
     );
   });
 
-async function getSummary(text) {
+// document.getElementById("toggleTheme").addEventListener("click", () => {
+//   document.body.classList.toggle("dark-mode");
+// });
+async function getSummary(text, language) {
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer sk-None-0e3pVNru421NRuPFQfRIT3BlbkFJQg4ivqSwNE3aHbe8FPSW`,
+        Authorization: `Bearer sk-None-nWDOY8T0rAPEfhsihO7OT3BlbkFJgYp0o63WNE2isyippglG`,
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
         messages: [
           {
             role: "user",
-            content: `Please summarize the following text:\n\n${text}`,
+            content: `Please summarize the following text in ${language}:\n\n${text}`,
           },
         ],
-        max_tokens: 100,
+        max_tokens: 150,
       }),
     });
 
@@ -71,25 +75,3 @@ async function getSummary(text) {
     return "Error fetching summary.";
   }
 }
-
-// async function summarize() {
-//   const [tab] = await chrome.tabs.query({ active: true, currentWidnow: true });
-
-//   chrome.scripting.executeScript({
-//     target: {tabId: tab.id},
-//     function: getContent
-//   }, async (results) => {
-//     const content = results[0].summary;
-//     const summary await summarizeContent(content){
-
-//     }
-//   })
-// }
-
-// function getContent() {
-//     return document.body.innerText;
-// }
-
-// async function summarizeContent(content) {
-
-// }
